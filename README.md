@@ -351,7 +351,8 @@ Note: For Waves 2, 3, 4, and 5, your implementation of each of the functions sho
 - take one parameter: `user_data`
   - `user_data` will have a field `"subscriptions"`. The value of `"subscriptions"` is a list of strings
     - This represents the names of streaming services that the user has access to
-    - Each friend in `"friends"` has a watched list. Each movie in the watched list has a `"host"`, which is a string that says what streaming service it's hosted on
+    - Each friend in `"friends"` has a watched list. Each movie in the watched list has a `"host"`, which is a
+     string that says what streaming service it's hosted on
 - Determine a list of recommended movies. A movie should be added to this list if and only if:
   - The user has not watched it
   - At least one of the user's friends has watched
