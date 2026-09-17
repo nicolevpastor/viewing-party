@@ -1,5 +1,7 @@
 
 #---------HELPER_FUNCTIONS---------
+
+#here we are getting the list of movies watched by friends and returning it
 def get_friends_watched_movies(user_data):
     friends_watched_movie_list =[]
     
@@ -8,13 +10,16 @@ def get_friends_watched_movies(user_data):
             friends_watched_movie_list.append(movie)
     return friends_watched_movie_list
 
+#here this helper function is getting the list of movie titles from a list of movies and returning it
 def get_movie_titles(movies):
     titles =[]
     for movie in movies:
         titles.append(movie["title"])
     return titles
     
-
+# -----------------------------------------
+# ------------- WAVE 1 --------------------
+# -----------------------------------------
 def create_movie(title, genre, rating):
 
     if title and genre and rating:
@@ -85,6 +90,9 @@ def get_most_watched_genre(user_data):
 # -----------------------------------------
 # ------------- WAVE 3 --------------------
 # -----------------------------------------
+
+#here we are checking if the movie in the users watched list is not 
+# in the friends watched list, if it is not we add it to unique movies list
 def get_unique_watched(user_data):
     user_movies = user_data['watched']
     friends_movies = get_friends_watched_movies(user_data)
@@ -97,6 +105,8 @@ def get_unique_watched(user_data):
             unique_movies.append(movie)
     return unique_movies
 
+#here we are checking if the movie in friends watched list is not in the users
+#  watched list, if it is not we add it to unique movies list
 def get_friends_unique_watched(user_data):
     user_movies = user_data["watched"]
     friends_movies = get_friends_watched_movies(user_data)
@@ -114,7 +124,8 @@ def get_friends_unique_watched(user_data):
 # -----------------------------------------
 
 def get_available_recs(user_data):
-
+#here we are checking if the host of the movie in friends unique watched list is equal 
+# to the subscriptions of the user, if it is we add it to recommended movies list
     recommended_movies = []
     movie_list = get_friends_unique_watched(user_data)
 
@@ -135,6 +146,9 @@ def get_available_recs(user_data):
 #trying to access favorites in userdata given in test_constants
 # we check each movie in favorites and see if it is in friends watched list, if not
 #  we add to recommended movies list
+
+#here we are checking if the genre of the movie in friends unique watched list is equal 
+# to the most watched genre of the user, if it is we add it to recommended movies list
 def get_new_rec_by_genre(user_data):
     recommeded_movies =[]
     genre = get_most_watched_genre(user_data)
@@ -144,6 +158,9 @@ def get_new_rec_by_genre(user_data):
             recommeded_movies.append(movie)
     return recommeded_movies
 
+
+#here we are checking if the genre of the movie in friends unique watched list is equal 
+# to the most watched genre of the user, if it is we add it to recommended movies list
 def get_rec_from_favorites(user_data):
     recommended_movies =[]
     friends_movies = get_friends_watched_movies(user_data)
@@ -152,14 +169,3 @@ def get_rec_from_favorites(user_data):
         if movie['title'] not in friends_movie_titles:
             recommended_movies.append(movie)
     return recommended_movies
-
-
-
-
-
-
-
-
-
-
-
